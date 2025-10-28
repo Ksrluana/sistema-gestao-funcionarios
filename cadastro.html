@@ -4,17 +4,39 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sistema Gestão Funcionários — Cadastro</title>
-  <link rel="stylesheet" href="./CSS/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./css/bootstrap.min.css"/>
+
+  <style>
+    :root { --tema:#0a0224; --tema-hover:#150b40; --fundo:#f9fafc; --borda:#dee2e6; --texto:#1d1b2a; }
+    body{ background:var(--fundo); color:var(--texto); font-family:'Segoe UI',sans-serif; }
+    .navbar{ background:var(--tema); }
+    .navbar .navbar-brand,.navbar .nav-link{ color:#fff!important; }
+    .navbar .nav-link.active{ text-decoration:underline; text-underline-offset:4px; }
+    .titulo{ font-weight:700; color:var(--tema); margin-bottom:1rem; border-left:6px solid var(--tema); padding-left:.6rem; }
+    .card{ border-radius:14px; border:1px solid var(--borda); box-shadow:0 3px 10px rgba(0,0,0,.05); background:#fff; }
+    .card-header{ background:#fff; color:var(--tema); font-weight:600; border-bottom:1px solid var(--borda); }
+    .form-label{ font-weight:600; color:#3b3b3b; }
+    .form-control,.form-select{ border:1px solid var(--borda); background:#fff; color:var(--texto); }
+    .form-control:focus,.form-select:focus{ border-color:var(--tema); box-shadow:0 0 0 .2rem rgba(10,2,36,.15); }
+    .btn-tema{ background:var(--tema); border:none; color:#fff; font-weight:600; letter-spacing:.3px; }
+    .btn-tema:hover{ background:var(--tema-hover); }
+    .btn-outline-tema{ border:2px solid var(--tema); color:var(--tema); font-weight:600; }
+    .btn-outline-tema:hover{ background:var(--tema); color:#fff; }
+    .table thead{ background:var(--tema); color:#fff; }
+    .table tbody tr:hover{ background:rgba(10,2,36,.06); }
+    .card-form{ max-width:400px; margin:auto; } /* reduzido */
+  </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="./indice.html">Sistema Gestão Funcionários</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <a class="navbar-brand fw-semibold" href="./indice.html">Sistema Gestão Funcionários</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="menu" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="./cadastro.html">Cadastro</a></li>
           <li class="nav-item"><a class="nav-link" href="./relatorio.html">Relatórios</a></li>
         </ul>
@@ -23,53 +45,74 @@
   </nav>
 
   <main class="container py-4">
-    <h2>Cadastro de Funcionários</h2>
-    <hr>
-    <div class="row">
-      <div class="col-12 col-md-8 mx-auto">
-        <div class="form-floating mb-3">
-          <input id="nome" type="text" class="form-control" placeholder="Nome">
-          <label for="nome">Nome</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input id="idade" type="number" class="form-control" placeholder="Idade" min="0">
-          <label for="idade">Idade</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input id="cargo" type="text" class="form-control" placeholder="Cargo">
-          <label for="cargo">Cargo</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input id="salario" type="number" class="form-control" placeholder="Salário" min="0" step="0.01">
-          <label for="salario">Salário</label>
-        </div>
+    <h2 class="titulo">Cadastro de Funcionários</h2>
 
-        <div class="d-grid gap-2">
-          <button id="btnSalvar" class="btn btn-primary">Cadastrar</button>
-        </div>
+    <div class="row g-4">
+      <!-- FORM -->
+      <div class="col-12 col-lg-4">
+        <div class="card card-form">
+          <div class="card-header">Nova entrada</div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" id="nome" class="form-control" placeholder="Ex: Maria Silva">
+            </div>
 
-        <div class="table-responsive mt-4">
-          <table class="table table-striped align-middle">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>Cargo</th>
-                <th>Salário</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbodyColaboradores"></tbody>
-          </table>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="idade" class="form-label">Idade</label>
+                <input type="number" id="idade" class="form-control" min="0" placeholder="Ex: 30">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="salario" class="form-label">Salário</label>
+                <input type="number" id="salario" class="form-control" min="0" step="0.01" placeholder="Ex: 4000.00">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="cargo" class="form-label">Cargo</label>
+              <input type="text" id="cargo" class="form-control" placeholder="Ex: Analista de Sistemas">
+            </div>
+
+            <div class="d-grid gap-2">
+              <!-- O JS escuta #btnSalvar, então este é o id certo -->
+              <button id="btnSalvar" class="btn btn-tema btn-lg">Cadastrar</button>
+              <a href="./relatorio.html" class="btn btn-outline-tema">Ver Relatórios</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABELA -->
+      <div class="col-12 col-lg-8">
+        <div class="card">
+          <div class="card-header">Funcionários Cadastrados</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped align-middle text-center">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Cargo</th>
+                    <th>Salário</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <!-- O JS escreve neste tbody -->
+                <tbody id="tbodyColaboradores"></tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
-  <script src="./js.funcionario/core.js"></script>
-<script src="./js.funcionario/pagina-cadastro.js"></script>
-<script src="./js/bootstrap.bundle.min.js"></script>
-
+ <script src="js.funcionario/core.js"></script>
+  <script src="js.funcionario/pagina-cadastro.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
 </body>
+</html>
 </html>

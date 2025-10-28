@@ -4,17 +4,54 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sistema Gestão Funcionários — Relatórios</title>
-  <link rel="stylesheet" href="./CSS/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./css/bootstrap.min.css"/>
+  <style>
+    :root {
+      --tema: #0a0224;
+      --fundo: #f9fafc;
+      --borda: #dee2e6;
+    }
+    body {
+      background: var(--fundo);
+      font-family: 'Segoe UI', sans-serif;
+      color: #222;
+    }
+    .navbar { background: var(--tema); }
+    .navbar .navbar-brand, .navbar .nav-link { color: #fff !important; }
+    .navbar .nav-link.active { text-decoration: underline; text-underline-offset: 4px; }
+
+    h2.titulo {
+      font-weight: 700;
+      color: var(--tema);
+      border-left: 6px solid var(--tema);
+      padding-left: .6rem;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      border-radius: 14px;
+      border: 1px solid var(--borda);
+      box-shadow: 0 3px 10px rgba(0,0,0,.05);
+      background: #fff;
+    }
+    .card-header {
+      background: #fff;
+      color: var(--tema);
+      font-weight: 600;
+      border-bottom: 1px solid var(--borda);
+    }
+    .card ul { margin: 0; padding-left: 1.2rem; }
+  </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="./indice.html">Sistema Gestão Funcionários</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <a class="navbar-brand fw-semibold" href="./indice.html">Sistema Gestão Funcionários</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="menu" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="./cadastro.html">Cadastro</a></li>
           <li class="nav-item"><a class="nav-link active" href="./relatorio.html">Relatórios</a></li>
         </ul>
@@ -23,54 +60,50 @@
   </nav>
 
   <main class="container py-4">
-    <h2>Relatórios de Funcionários</h2>
-    <hr>
-    <div class="row g-3">
+    <h2 class="titulo">Relatórios de Funcionários</h2>
+    <p class="text-muted mb-4">Os relatórios são gerados automaticamente com base nos dados cadastrados.</p>
+
+    <div class="row g-4">
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">Salário &gt; R$ 5000</div>
+          <div class="card-header">💰 Salário &gt; R$ 5000</div>
           <div class="card-body">
-            <button id="btnRicos" class="btn btn-sm btn-primary mb-2">Listar</button>
-            <ul id="listaRicos" class="mb-0"></ul>
+            <ul id="listaRicos"><li><em>Carregando...</em></li></ul>
           </div>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">Média Salarial</div>
+          <div class="card-header">📊 Média Salarial</div>
           <div class="card-body">
-            <button id="btnMedia" class="btn btn-sm btn-primary mb-2">Calcular</button>
-            <p><strong id="mediaSalarial">-</strong></p>
+            <strong id="mediaSalarial">-</strong>
           </div>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">Cargos Únicos</div>
+          <div class="card-header">👔 Cargos Únicos</div>
           <div class="card-body">
-            <button id="btnCargos" class="btn btn-sm btn-primary mb-2">Mostrar</button>
-            <ul id="listaCargos"></ul>
+            <ul id="listaCargos"><li><em>Carregando...</em></li></ul>
           </div>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">Nomes em MAIÚSCULO</div>
+          <div class="card-header">🔠 Nomes em MAIÚSCULO</div>
           <div class="card-body">
-            <button id="btnCaps" class="btn btn-sm btn-primary mb-2">Gerar</button>
-            <ul id="listaCaps"></ul>
+            <ul id="listaCaps"><li><em>Carregando...</em></li></ul>
           </div>
         </div>
       </div>
     </div>
   </main>
 
- <script src="./js.funcionario/core.js"></script>
-<script src="./js.funcionario/pagina-relatorios.js"></script>
-<script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="js.funcionario/core.js"></script>
+  <script src="js.funcionario/pagina-relatorios.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>
-
