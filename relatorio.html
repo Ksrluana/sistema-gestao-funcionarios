@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema Gestão Funcionários — Relatórios</title>
+  <link rel="stylesheet" href="./CSS/bootstrap.min.css"/>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="./indice.html">Sistema Gestão Funcionários</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu" class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="./cadastro.html">Cadastro</a></li>
+          <li class="nav-item"><a class="nav-link active" href="./relatorio.html">Relatórios</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h2>Relatórios de Funcionários</h2>
+    <hr>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Salário &gt; R$ 5000</div>
+          <div class="card-body">
+            <button id="btnRicos" class="btn btn-sm btn-primary mb-2">Listar</button>
+            <ul id="listaRicos" class="mb-0"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Média Salarial</div>
+          <div class="card-body">
+            <button id="btnMedia" class="btn btn-sm btn-primary mb-2">Calcular</button>
+            <p><strong id="mediaSalarial">-</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Cargos Únicos</div>
+          <div class="card-body">
+            <button id="btnCargos" class="btn btn-sm btn-primary mb-2">Mostrar</button>
+            <ul id="listaCargos"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Nomes em MAIÚSCULO</div>
+          <div class="card-body">
+            <button id="btnCaps" class="btn btn-sm btn-primary mb-2">Gerar</button>
+            <ul id="listaCaps"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+ <script src="./js.funcionario/core.js"></script>
+<script src="./js.funcionario/pagina-relatorios.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
